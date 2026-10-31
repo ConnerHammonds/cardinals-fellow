@@ -6,7 +6,20 @@ I am able to work the schedule with no constraints.
 
 **Favorite Project**
 
-My favorite project is the pitch quality dashboard I built for Premier Pitching Performance. I've built other things in the past, but it was exciting to build something that I knew would be useful to a company working with high level athletes. I am proud that the project works well with athletes of varying levels. It's fairly easy to get good results at the MLB level because of the amount of data that is publicly available, but I was proud that I built a product that handles amateur athletes as well.
+Please tell us about your favorite data project you've ever worked on. What languages and
+technology did you use, and what did you personally build? What made it your favorite, and
+what are you proud of about it? What went wrong or broke along the way, and how did you
+find it? What would you do differently if you did it again? If you can, include a link to the
+code. If the work is private, a redacted snippet or a short description of how it was built is
+fine.
+
+My favorite project is the pitch quality dashboard I built for Premier Pitching Performance. I used Python for some initial ideas since I am more comfortable with it, but the final product was built in R with a Shiny web app component. The dashboard displayed trackman data and computed a stuff+, whiff+, and pitching+ score for all athletes in the company database. Stuff+ was built using run value similar to existing stuff+ models. Whiff+ used the same feature set but targeted whiffs instead of run value. The pitching+ was mainly used for a heatmap component that showed the most effective locations for each pitch type based on the pitcher's specific arsenal. There was also a leaderboard component as well as average scores from each model by level of play (Juco, D1, D2, etc).
+
+The main thing I was proud of was that it handled lower level athletes. Most models only handle high level players well since that's where the majority of the public data is. I was able to get some reliable amateur data and build a model that handles pitchers of varying levels which I think is less common.
+
+If I could go back, I would ask more questions earlier on in the project. I try to be independent which I don't think is bad, but there were some things that could've been resolved earlier if I reached out. The amateur dataset I used is a good example of this. I spent a sizable amount of time trying to teach the model how to understand amateur data even though it was trained on MLB data. That never worked and ended up wasting valuable time.
+
+Unfortunately, all the code I wrote is private and unable to be shared here. I wrote an article about it that goes more in-depth. It is linked below.
 
 https://medium.com/@connerhammonds/pitch-grading-providing-quantitative-metrics-to-guide-players-34cbd48f3b3f
 
