@@ -102,3 +102,26 @@ The other thing that I would like to know is not really data-driven, but I'd be 
 
 Note: I didn't consider guys with exceptionally small sample sizes as I don't think you can call 30PAs a "poor" season. For this reason, guys like Cesar Prieto and Everson Pereira were not considered.
 
+**Strike Model**
+
+The called strike model was a pretty simple task, so I kept the model simple in construction as well. I used logistic regression with the following features:
+
+- Inches outside the zone
+- 3 ball flag
+- 2 strike flag
+
+The inches outside the zone feature is the shortest straight line to the edge of the strike zone (similar to what is visualized during ABS challenges). Naturally, this is the most important feature since it explains the location of the pitch. The count flags are just binary options that get labeled as 0/1 depending on if that condition is true. They have pretty minimal impact, but they do make the model better. I tried some additional features like catcher, pitch type, and pitcher handedness but the results were trivial.
+
+There were a few issues with the data. The biggest issue was that one of the games had the strike zone listed in inches while all the others had it in feet. This would've been thrown off all of the predictions for that game, so I had to convert those rows to feet.  There were also a couple of weird velocities in there, but velocity wasn't a part of the model so that didn't matter. Lastly, there were a handful of duplicate rows and rows with no strike call. Duplicate rows were consolidated into one and the rows with missing calls were dropped.
+
+I compared my model against a model that only knows if the pitch was inside the rulebook zone or not and my model outperformed it. Most pitches are obviously balls or obviously strikes, so the models get pretty much the same results there. My model was able to learn that pitches in the shadow zone are not definite strikes just because the ball knicked the zone. Because of that, the results were better as shown by the lower log loss.
+
+|Model|Log Loss|
+|---|---|
+|Rulebook zone|0.172|
+|My model|0.104|
+
+Interestingly, the zone reportedly got smaller from the count flags meaning that umpires called less strikes when there were 3 ball counts and/or 2 strike counts. This model is trained on a small sample size making it harder to know if these relationships would hold up over time, but I did think it was interesting finding.
+
+In addition to the small sample size, the other biggest limitation is that I don't have any way of knowing how the catcher set up or received the pitch. Pitch presentation is a big part of getting strike calls, and I don't have any way to quantify that here. I would consider that the biggest limitation of this specific model. For more information on the model, see `strike_model.ipynb`. Predictions are saved in `strike_predictions.csv`.
+
