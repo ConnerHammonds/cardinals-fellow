@@ -47,7 +47,7 @@ Left handed batters are much more of a problem for Mcgreevy (2026 OPS .772) sinc
 
 The cutter up and in can keep hitters from diving over the plate making the two an effective pairing. His two primary mixups should be the curveball outside used primarily early or behind in counts, and the fastball low and away as a freeze when hitters are slowed down. I created heat maps to showcase where his pitch types maximize run value (reproducable via `pitch_location_analysis.ipynb`) as part of my analysis. It is important to note that strikes that are taken (3-0 for instance) positively contribute to a pitcher's run value, so there might be instances with things like the 4-seam where he threw a "get me over" strike and it positively contributed to the heatmap. That being said, I still think they hold strong analytical value.
 
-![alt text](lefty_heat_maps.png)
+![alt text](../images/lefty_heat_maps.png)
 
 **Good Sends vs. Bad Sends**
 
